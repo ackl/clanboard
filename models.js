@@ -5,11 +5,14 @@ module.exports = function (db) {
     return {
         posts: db.model('Post', mongoose.Schema({
             body: String,
-            thread: ObjectId
+            thread: ObjectId,
+            author: ObjectId,
+            image: String,
+            date: Date
         })),
         threads: db.model('Thread', mongoose.Schema({
             title: String,
-            author: ObjectId
+            post: ObjectId
         }))
     }
 };

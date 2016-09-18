@@ -6,16 +6,15 @@ module.exports = function (models, socket) {
     });
 
     router.get('/api/:collection', function (req, res, next) {
-        models[req.params.collection].find(function (err, results, count) {
+        var model = models[req.params.collection];
+        model.find(function (err, results, count) {
             res.send(results);
         });
     });
     router.post('/api/:collection', function (req, res) {
         var model = models[req.params.collection];
         model.create(req.body, function (err, data) {
-            model.find(function (err, results, count) {
-                socket.emit('new-' + model.modelName.toLowerCase(), results);
-            });
+            if (!err) socket.emit('new-' + model.modelName.toLowerCase(), data);
         });
         res.send(req.body);
     });
