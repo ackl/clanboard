@@ -1,0 +1,21 @@
+<template lang="jade">
+    mdl-card(actions="submitPost" actions-text="Submit") 
+        mdl-textfield(textarea :value.sync="postBody" rows="5" slot="supporting-text")
+</template>
+
+<script lang="babel">
+    export default {
+        data: function () {
+            return { postBody: '' }
+        },
+        events: {
+            submitPost: function () {
+                this.$http.post('/api/posts', {body: this.postBody}).then((res) => {
+                    console.log("Post submitted.")
+                }, (res) => {
+                    console.log("Post submission failed.")
+                })
+            }
+        }
+    }
+</script>

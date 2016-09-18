@@ -5,16 +5,30 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-var mongoose = require('mongoose').createConnection(process.env.MONGODB_URI);
+var mongoose = require('mongoose')
+var db = mongoose.createConnection(process.env.MONGODB_URI);
 var router = express.Router();
+
+var models = {
+    posts: db.model('Post', mongoose.Schema({
+        body: String
+    }))
+}
 
 router.get('/', function(req, res, next) {
     res.render('index.html');
 });
-
-// view engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'jade');
+router.get('/api/:collection', function(req, res, next) {
+    models[req.params.collection].find(function(err, results, count) {
+        res.send(results);
+    });
+});
+router.post('/api/:collection', function(req, res) {
+    models[req.params.collection].create(req.body, function(err, data) {
+        console.log(data);
+    });
+    res.send(req.body);
+});
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
