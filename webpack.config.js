@@ -2,7 +2,7 @@ module.exports = {
     entry: './src/main.js',
     output: {
         path: require('path').join(__dirname, 'public'),
-        publicPath: '/public/',
+        publicPath: 'http://localhost:8080/public/',
         filename: 'build.js'
     },
     module: {
