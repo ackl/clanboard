@@ -5,16 +5,18 @@
 </template>
 
 <script lang="babel">
-    import socket from 'socket.io'
+    import io from 'socket.io-client'
     import NewPost from './NewPost.vue'
+
+    let socket = io()
 
     export default {
         data: () => {
             return { posts: [] }
         },
         components: { NewPost },
-        activate: (done) => {
-            socket.io().on('new-post', function(data) {
+        activate: function (done) {
+            socket.on('new-post', (data) => {
                 this.posts = data
             })
             this.$http.get('/api/posts').then((res) => {
