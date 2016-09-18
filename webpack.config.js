@@ -4,7 +4,7 @@ module.exports = {
     entry: './src/main.js',
     output: {
         path: require('path').join(__dirname, 'public'),
-        publicPath: process.env.DEV ? 'http://localhost:8080/public/' : '/',
+        publicPath: (process.env.DEV ? 'http://localhost:8080/public/' : '/'),
         filename: 'build.js'
     },
     module: {
