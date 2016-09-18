@@ -1,5 +1,5 @@
 <template lang="jade">
-    mdl-card(:supporting-text="postBody")
+    mdl-card(:supporting-text="postBody" class="clanboard-post")
 </template>
 
 <script lang="babel">
@@ -11,3 +11,10 @@
         }
     }
 </script>
+
+<style lang="sass">
+    .clanboard-post {
+        min-height: 0;
+        width: auto;
+    }
+</style>

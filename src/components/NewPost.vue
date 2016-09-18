@@ -1,5 +1,10 @@
 <template lang="jade">
-    mdl-card(actions="submitPost" actions-text="Submit") 
+    mdl-card(
+        actions="submitPost"
+        actions-text="Submit"
+        title="New post"
+        class="clanboard-new-post"
+    )
         mdl-textfield(textarea :value.sync="postBody" rows="5" slot="supporting-text")
 </template>
 
@@ -22,8 +27,7 @@
 </script>
 
 <style lang="sass">
-ul {
-    list-style-type: none;
-    padding: 0;
+.clanboard-new-post {
+    margin: auto;
 }
 </style>

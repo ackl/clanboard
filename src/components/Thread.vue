@@ -1,6 +1,6 @@
 <template lang="jade">
     new-post
-    ul
+    ul.clanboard-thread
         li(v-for="post in posts | orderBy '_id' -1")
             post(:post-body="post.body")
 </template>
@@ -28,3 +28,12 @@
         }
     }
 </script>
+
+<style lang="sass">
+.clanboard-thread {
+    list-style-type: none;
+    padding: 0;
+    width: 50%;
+    margin: 20px auto;
+}
+</style>
