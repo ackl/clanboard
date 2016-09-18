@@ -1,4 +1,4 @@
-<template lang="jade">
+<template lang="pug">
     new-post
     ul.clanboard-thread
         li(v-for="post in posts | orderBy '_id' -1")

@@ -1,4 +1,4 @@
-<template lang="jade">
+<template lang="pug">
     mdl-card(
         actions="submitPost"
         actions-text="Submit"

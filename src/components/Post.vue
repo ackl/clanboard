@@ -1,4 +1,4 @@
-<template lang="jade">
+<template lang="pug">
     mdl-card(:supporting-text="postBody" class="clanboard-post")
 </template>
 
