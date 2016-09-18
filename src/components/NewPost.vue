@@ -20,3 +20,10 @@
         }
     }
 </script>
+
+<style lang="sass">
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+</style>

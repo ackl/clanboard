@@ -1,17 +1,19 @@
 <template lang="jade">
     new-post
     ul
-        li(v-for="post in posts | orderBy '_id' -1") {{ post.body }}
+        li(v-for="post in posts | orderBy '_id' -1")
+            post(:post-body="post.body")
 </template>
 
 <script lang="babel">
     import NewPost from './NewPost.vue'
+    import Post from './Post.vue'
 
     import io from 'socket.io-client'
     let socket = io()
 
     export default {
-        components: { NewPost },
+        components: { NewPost, Post },
         data: () => {
             return { posts: [] }
         },
