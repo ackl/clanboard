@@ -1,8 +1,7 @@
-<template>
-    <div class="app">
-        test
-    </div>
+<template lang="jade">
+    mdl-button Test
 </template>
-<script>
-    export default {}
+
+<script lang="babel">
+    export default { }
 </script>
