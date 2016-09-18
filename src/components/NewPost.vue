@@ -28,7 +28,8 @@
     }
 </script>
 
-<style lang="sass">
+<style lang="sass" scope>
+.mdl-textfield,
 .clanboard-new-post {
     margin: auto;
 }
