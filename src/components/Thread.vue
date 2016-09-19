@@ -2,7 +2,7 @@
     new-post
     ul.clanboard-thread
         li(v-for="post in posts | orderBy '_id' -1")
-            post(:post-body="post.body")
+            post(:post="post")
 </template>
 
 <script lang="babel">

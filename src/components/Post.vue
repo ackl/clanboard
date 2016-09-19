@@ -1,14 +1,10 @@
 <template lang="pug">
-    mdl-card(:supporting-text="postBody" class="clanboard-post")
+    mdl-card(:supporting-text="post.body" class="clanboard-post")
 </template>
 
 <script lang="babel">
     export default {
-        props: {
-            postBody: {
-                default: 'loading...'
-            }
-        }
+        props: [ 'post' ]
     }
 </script>
 
