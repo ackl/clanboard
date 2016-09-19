@@ -183,7 +183,7 @@ module.exports = {
         "no-useless-constructor": "error",
         "no-useless-escape": "error",
         "no-useless-rename": "error",
-        "no-var": "off",
+        "no-var": "error",
         "no-void": "error",
         "no-warning-comments": "error",
         "no-whitespace-before-property": "error",
@@ -221,7 +221,7 @@ module.exports = {
         "sort-keys": "off",
         "sort-vars": "error",
         "space-before-blocks": "error",
-        "space-before-function-paren": "off",
+        "space-before-function-paren": ["error", "never"],
         "space-in-parens": [
             "error",
             "never"

@@ -1,6 +1,5 @@
 import 'material-design-lite/material.css'
 import 'material-design-lite/material.js'
-
 import App from './components/App.vue'
 
 import Vue from 'vue'

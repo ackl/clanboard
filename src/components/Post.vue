@@ -25,7 +25,7 @@ const slots = [
 
 export default {
   computed: {
-    isActionsURL () {
+    isActionsURL() {
       if (typeof this.actions === 'string') {
         return this.actions.match(/^(https?:)?\/\//) !== null
       }
@@ -81,7 +81,7 @@ export default {
         default: true
     }
   },
-  compiled () {
+  compiled() {
     slots.forEach((slot, pos) => {
       if (this[slot] === true) {
         const el = this.$el.children[pos]
@@ -93,10 +93,10 @@ export default {
     // el = @$el.children[pos]?.attributes.getNamedItem 'slot'
   },
   methods: {
-    triggerMenuEvent () {
+    triggerMenuEvent() {
       this.$dispatch(this.menu)
     },
-    triggerActionsEvent () {
+    triggerActionsEvent() {
       this.$dispatch(this.actions)
     }
   }

@@ -10,11 +10,11 @@
 
 <script lang="babel">
     export default {
-        data: function () {
+        data: function() {
             return { postBody: '' }
         },
         events: {
-            submitPost: function () {
+            submitPost: function() {
                 if (this.postBody) {
                     this.$http.post('/api/posts', {
                         body: this.postBody
