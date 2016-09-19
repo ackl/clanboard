@@ -15,91 +15,90 @@
 
 <script>
 const slots = [
-  'title',
-  'subtitle',
-  'supportingText',
-  'media',
-  'actions',
-  'menu'
+    'title',
+    'subtitle',
+    'supportingText',
+    'media',
+    'actions',
+    'menu'
 ]
 
 export default {
-  computed: {
-    isActionsURL() {
-      if (typeof this.actions === 'string') {
-        return this.actions.match(/^(https?:)?\/\//) !== null
-      }
+    computed: {
+        isActionsURL() {
+            if (typeof this.actions === 'string') {
+                return this.actions.match(/^(https?:)?\/\//) !== null
+            }
 
-      return false
-    },
-    supportingText() {
-        return this.post.body
-    },
-    subtitle() {
-        const formattedDate = new Date(this.post.created_at)
-            .toString()
-            .split(' ')
-            .slice(0, 5)
-            .join(' ')
+            return false
+        },
+        supportingText() {
+            return this.post.body
+        },
+        subtitle() {
+            const formattedDate = new Date(this.post.created_at)
+                .toString()
+                .split(' ')
+                .slice(0, 5)
+                .join(' ')
 
-        return `
-            <span class="post-timestamp">${formattedDate}</span>
-            <span class="post-id">${this.post._id}</span>
-        `
-    }
-  },
-  props: {
-    title: {
-      type: String,
-      default: true
-    },
-    menu: {
-      default: true
-    },
-    actions: {
-      type: String,
-      default: true
-    },
-    actionsTarget: {
-      default: '_self',
-      type: String
-    },
-    actionsText: String,
-    media: {
-      default: true,
-      type: String
-    },
-    subtitle: {
-      default: true,
-      type: String
-    },
-    supportingText: {
-      default: true,
-      type: String
-    },
-    post: {
-        default: true
-    }
-  },
-  compiled() {
-    slots.forEach((slot, pos) => {
-      if (this[slot] === true) {
-        const el = this.$el.children[pos]
-        if (!el || !el.attributes.getNamedItem('slot')) {
-          this[slot] = ''
+            return `
+                <span class="post-timestamp">${formattedDate}</span>
+                <span class="post-id">${this.post._id}</span>
+            `
         }
-      }
-    })
-    // el = @$el.children[pos]?.attributes.getNamedItem 'slot'
-  },
-  methods: {
-    triggerMenuEvent() {
-      this.$dispatch(this.menu)
     },
-    triggerActionsEvent() {
-      this.$dispatch(this.actions)
+    props: {
+        title: {
+            type: String,
+            default: true
+        },
+        menu: {
+            default: true
+        },
+        actions: {
+            type: String,
+            default: true
+        },
+        actionsTarget: {
+            default: '_self',
+            type: String
+        },
+        actionsText: String,
+        media: {
+            default: true,
+            type: String
+        },
+        subtitle: {
+            default: true,
+            type: String
+        },
+        supportingText: {
+            default: true,
+            type: String
+        },
+        post: {
+            default: true
+        }
+    },
+    compiled() {
+        slots.forEach((slot, pos) => {
+            if (this[slot] === true) {
+                const el = this.$el.children[pos]
+                if (!el || !el.attributes.getNamedItem('slot')) {
+                    this[slot] = ''
+                }
+            }
+        })
+    },
+    methods: {
+        triggerMenuEvent() {
+            this.$dispatch(this.menu)
+        },
+        triggerActionsEvent() {
+            this.$dispatch(this.actions)
+        }
     }
-  }
 }
 </script>
 
