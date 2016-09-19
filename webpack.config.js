@@ -41,5 +41,8 @@ module.exports = {
     babel: {
         presets: ['es2015'],
         plugins: ['transform-runtime']
+    },
+    sassLoader: {
+        data: "$env: " + process.env.DEV + ";"
     }
 }

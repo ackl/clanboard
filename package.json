@@ -25,6 +25,7 @@
     "pug": "^2.0.0-beta6",
     "pug-loader": "^2.3.0",
     "sass-loader": "^4.0.2",
+    "sass-mq": "^3.2.9",
     "serve-favicon": "~2.3.0",
     "socket.io": "^1.4.8",
     "socket.io-client": "^1.4.8",

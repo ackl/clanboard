@@ -53,10 +53,15 @@
 </script>
 
 <style lang="sass">
+@import "../scss/media-query";
+
 .clanboard-thread {
     list-style-type: none;
     padding: 0;
-    width: 50%;
     margin: 20px auto;
+
+    @include mq(tablet) {
+        width: 50%;
+    }
 }
 </style>

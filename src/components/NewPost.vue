@@ -29,8 +29,21 @@
 </script>
 
 <style lang="sass" scope>
+@import "../scss/media-query";
+.mdl-textfield {
+    width: 90%;
+}
+
 .mdl-textfield,
 .clanboard-new-post {
     margin: auto;
+}
+
+.clanboard-new-post {
+    width: 100%;
+
+    @include mq(tablet) {
+        width: 50%;
+    }
 }
 </style>
