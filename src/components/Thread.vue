@@ -6,20 +6,23 @@
 </template>
 
 <script lang="babel">
-    import NotifyModule from 'notifyjs'
-    import NewPost from './NewPost.vue'
-    import Post from './Post.vue'
     import io from 'socket.io-client'
+    import NewPost from './NewPost.vue'
+    import NotifyModule from 'notifyjs'
+    import Post from './Post.vue'
 
-    let socket = io()
+    const socket = io()
     const Notify = NotifyModule.default
 
     export default {
-        components: { NewPost, Post },
-        data: () => {
-            return { posts: [] }
+        components: {
+            NewPost,
+            Post
         },
-        activate: function (done) {
+        data: () => ({
+            posts: []
+        }),
+        activate: function(done) {
             this.initNotify();
 
             this.$http.get('/api/posts').then((res) => {

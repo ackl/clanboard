@@ -27,10 +27,25 @@ export default {
   computed: {
     isActionsURL () {
       if (typeof this.actions === 'string') {
-        return this.actions.match(/^(https?:)?\/\//) != null
-      } else {
-        return false
+        return this.actions.match(/^(https?:)?\/\//) !== null
       }
+
+      return false
+    },
+    supportingText() {
+        return this.post.body
+    },
+    subtitle() {
+        const formattedDate = new Date(this.post.created_at)
+            .toString()
+            .split(' ')
+            .slice(0, 5)
+            .join(' ')
+
+        return `
+            <span class="post-timestamp">${formattedDate}</span>
+            <span class="post-id">${this.post._id}</span>
+        `
     }
   },
   props: {
@@ -66,27 +81,10 @@ export default {
         default: true
     }
   },
-  computed: {
-    supportingText() {
-        return this.post.body
-    },
-    subtitle() {
-        let formattedDate = new Date(this.post.created_at)
-            .toString()
-            .split(' ')
-            .slice(0, 5)
-            .join(' ')
-
-        return `
-            <span class="post-timestamp">${formattedDate}</span>
-            <span class="post-id">${this.post._id}</span>
-        `
-    }
-  },
   compiled () {
     slots.forEach((slot, pos) => {
       if (this[slot] === true) {
-        let el = this.$el.children[pos]
+        const el = this.$el.children[pos]
         if (!el || !el.attributes.getNamedItem('slot')) {
           this[slot] = ''
         }

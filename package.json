@@ -4,8 +4,9 @@
   "private": true,
   "scripts": {
     "build": "webpack -p",
-    "prestart": "eslint . && npm run build",
-    "dev": "DEV=true npm start & DEV=true webpack-dev-server --inline --hot"
+    "prestart": "npm run lint && npm run build",
+    "dev": "DEV=true npm start & DEV=true webpack-dev-server --inline --hot",
+    "lint": "eslint --ext vue,js ."
   },
   "dependencies": {
     "babel-core": "^6.14.0",
@@ -41,6 +42,7 @@
     "webpack": "^1.13.2"
   },
   "devDependencies": {
+    "eslint-plugin-html": "^1.5.2",
     "webpack-dev-server": "^1.16.1"
   }
 }

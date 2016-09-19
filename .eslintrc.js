@@ -48,7 +48,7 @@ module.exports = {
         "consistent-this": "error",
         "curly": "off",
         "default-case": "error",
-        "dot-location": "error",
+        "dot-location": ["error", "property"],
         "dot-notation": [
             "error",
             {
@@ -86,7 +86,7 @@ module.exports = {
         "lines-around-comment": "error",
         "lines-around-directive": "error",
         "max-depth": "error",
-        "max-len": "error",
+        "max-len": "warn",
         "max-lines": "error",
         "max-nested-callbacks": "error",
         "max-params": "error",
@@ -106,6 +106,7 @@ module.exports = {
         "no-caller": "error",
         "no-catch-shadow": "error",
         "no-confusing-arrow": "error",
+        "no-console": "warn",
         "no-continue": "error",
         "no-div-regex": "error",
         "no-duplicate-imports": "error",
@@ -193,7 +194,7 @@ module.exports = {
             "always"
         ],
         "object-property-newline": "error",
-        "object-shorthand": "error",
+        "object-shorthand": "off",
         "one-var": "off",
         "one-var-declaration-per-line": "error",
         "operator-assignment": "error",
@@ -216,7 +217,7 @@ module.exports = {
         "rest-spread-spacing": "error",
         "semi": "off",
         "semi-spacing": "error",
-        "sort-imports": "error",
+        "sort-imports": ["error", { "ignoreCase": true }],
         "sort-keys": "off",
         "sort-vars": "error",
         "space-before-blocks": "error",
@@ -248,5 +249,8 @@ module.exports = {
     "globals": {
         "process": false,
         "__dirname": false
-    }
+    },
+    "plugins": [
+        "html"
+    ]
 };

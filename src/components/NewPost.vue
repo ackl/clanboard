@@ -16,10 +16,12 @@
         events: {
             submitPost: function () {
                 if (this.postBody) {
-                    this.$http.post('/api/posts', {body: this.postBody}).then((res) => {
+                    this.$http.post('/api/posts', {
+                        body: this.postBody
+                    }).then(() => {
                         console.log("Post submitted.");
                         this.postBody = '';
-                    }, (res) => {
+                    }, () => {
                         console.log("Post submission failed.")
                     })
                 }
