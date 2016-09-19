@@ -1,19 +1,18 @@
-import Vue from 'vue'
-import VueResource from 'vue-resource'
-import VueMdl from 'vue-mdl'
-
 import 'material-design-lite/material.css'
 import 'material-design-lite/material.js'
 
 import App from './components/App.vue'
 
-Vue.use(VueResource)
-Vue.use(VueMdl)
+import Vue from 'vue'
+import VueMdl from 'vue-mdl'
+import VueResource from 'vue-resource'
 
-new Vue({
+Vue.use(VueMdl)
+Vue.use(VueResource)
+
+window.vm = new Vue({
     el: 'body',
     components: {
         app: App
     }
 })
-

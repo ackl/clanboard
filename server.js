@@ -7,7 +7,7 @@ app.set('port', port);
 server.listen(port);
 
 var path = require('path');
-var favicon = require('serve-favicon');
+//var favicon = require('serve-favicon');
 var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
 

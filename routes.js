@@ -1,13 +1,13 @@
 module.exports = function (models, socket) {
     var router = require('express').Router();
 
-    router.get('/', function (req, res, next) {
+    router.get('/', function (req, res) {
         res.send('index.html');
     });
 
-    router.get('/api/:collection', function (req, res, next) {
+    router.get('/api/:collection', function (req, res) {
         var model = models[req.params.collection];
-        model.find(function (err, results, count) {
+        model.find(function (err, results) {
             res.send(results);
         });
     });
