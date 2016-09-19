@@ -43,6 +43,6 @@ module.exports = {
         plugins: ['transform-runtime']
     },
     sassLoader: {
-        data: "$env: " + process.env.DEV + ";"
+        data: "$dev: " + process.env.DEV + ";"
     }
 }
