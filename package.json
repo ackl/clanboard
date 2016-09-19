@@ -5,8 +5,9 @@
   "scripts": {
     "build": "webpack -p",
     "prestart": "npm run lint && npm run build",
-    "dev": "DEV=true npm start & DEV=true webpack-dev-server --inline --hot",
-    "lint": "eslint --ext vue,js ."
+    "dev": "npm run lint:watch & DEV=true npm start & DEV=true webpack-dev-server --inline --hot",
+    "lint": "eslint --ext vue,js .",
+    "lint:watch": "chokidar '**/*.js' '**/*.vue' -c 'npm run lint'"
   },
   "dependencies": {
     "babel-core": "^6.14.0",
@@ -43,6 +44,7 @@
     "webpack": "^1.13.2"
   },
   "devDependencies": {
+    "chokidar-cli": "^1.2.0",
     "webpack-dev-server": "^1.16.1"
   }
 }
