@@ -63,5 +63,9 @@
     @include mq(tablet) {
         width: 50%;
     }
+
+    li {
+        margin-bottom: 1rem;
+    }
 }
 </style>
