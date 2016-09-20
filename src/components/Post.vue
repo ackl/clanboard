@@ -102,7 +102,7 @@ export default {
             this.$dispatch(this.actions)
         },
         triggerReply() {
-            this.$dispatch('reply', this.post.thread)
+            this.$dispatch('reply', this.post._id)
         }
     }
 }
