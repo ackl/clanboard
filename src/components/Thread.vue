@@ -22,17 +22,6 @@
         data: () => ({
             posts: []
         }),
-        activate: function(done) {
-            this.initNotify();
-
-            this.$http.get('/api/posts').then((res) => {
-                this.posts = res.body
-                done()
-            })
-
-            socket.on('new-post', this.onNewPost.bind(this));
-        },
-
         methods: {
             onNewPost(data) {
                 this.posts.push(data);
@@ -50,6 +39,17 @@
                         Notify.requestPermission();
                     }
                 }
+            }
+        },
+        route: {
+            activate: function () {
+                this.initNotify();
+
+                this.$http.get('/api/posts').then((res) => {
+                    this.posts = res.body;
+                })
+
+                socket.on('new-post', this.onNewPost.bind(this));
             }
         }
     }

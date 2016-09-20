@@ -1,19 +1,23 @@
 <template lang="pug">
-    main
-        h1 Clanboard
-        thread
+    div
+        main
+            h1(@click="link") Clanboard
+            router-view
 </template>
 
 <script lang="babel">
-    import Thread from './Thread.vue'
-
     export default {
-        components: { Thread }
+        methods: {
+            link: function () {
+                this.$route.router.go({ name: 'home' })
+            }
+        }
     }
 </script>
 
 <style lang="sass" scoped>
-h1 {
-    margin-left: 20px;
-}
+    h1 {
+        margin-left: 20px;
+        cursor: pointer;
+    }
 </style>
