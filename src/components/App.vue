@@ -1,7 +1,7 @@
 <template lang="pug">
     div
         main
-            h1(@click="link") Clanboard
+            h1(@click="link") chatchan
             router-view
 </template>
 
