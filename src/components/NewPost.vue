@@ -4,7 +4,7 @@
             actions="submitPost"
             actions-text="Submit"
             title="New post"
-            class="clanboard-new-post"
+            class="chatchan-new-post"
         )
             mdl-textfield(textarea :value.sync="postBody" rows="5" slot="supporting-text")
 </template>
@@ -37,11 +37,11 @@
     }
 
     .mdl-textfield,
-    .clanboard-new-post {
+    .chatchan-new-post {
         margin: auto;
     }
 
-    .clanboard-new-post {
+    .chatchan-new-post {
         width: 100%;
 
         @include mq(tablet) {

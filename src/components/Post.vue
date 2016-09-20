@@ -1,5 +1,5 @@
 <template lang="pug">
-.mdl-card.mdl-shadow--2dp.clanboard-post
+.mdl-card.mdl-shadow--2dp.chatchan-post
   slot(name='title' v-if='title')
     .mdl-card__title
       h2.mdl-card__title-text {{title}}
@@ -103,7 +103,7 @@ export default {
 </script>
 
 <style lang="sass">
-.clanboard-post {
+.chatchan-post {
     min-height: 0;
     width: auto;
 

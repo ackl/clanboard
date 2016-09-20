@@ -2,7 +2,7 @@
     div
         p {{ threadId }}
         new-post(:thread-id="threadId")
-        ul.clanboard-thread
+        ul.chatchan-thread
             li(v-for="post in posts | orderBy '_id' -1")
                 post(:post="post")
 </template>
@@ -63,7 +63,7 @@
 <style lang="sass">
     @import "../scss/media-query";
 
-    .clanboard-thread {
+    .chatchan-thread {
         list-style-type: none;
         padding: 0;
         margin: 20px auto;
