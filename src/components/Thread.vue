@@ -45,7 +45,9 @@
                 }
             },
             addReply(data) {
-                this.$refs.box.postBody += `>>${data}`;
+                const { box } = this.$refs
+                box.postBody += `>>${data}\n`;
+                box.$el.querySelector('textarea').focus()
             }
         },
         route: {

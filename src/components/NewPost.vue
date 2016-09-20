@@ -6,7 +6,7 @@
             title="New post"
             class="chatchan-new-post"
         )
-            mdl-textfield(textarea :value.sync="postBody" rows="5" slot="supporting-text")
+            mdl-textfield(textarea :value.sync="postBody" rows="5" slot="supporting-text" spellcheck="false")
 </template>
 
 <script lang="babel">
