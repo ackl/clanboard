@@ -4,7 +4,6 @@ module.exports = (models, socket) => {
     router.get('/', (req, res) => {
         res.send('index.html');
     });
-
     router.get('/api/:collection', (req, res) => {
         const model = models[req.params.collection];
 
@@ -12,12 +11,21 @@ module.exports = (models, socket) => {
             res.send(results);
         });
     });
+    router.get('/api/:collection/:id/:subcollection', (req, res) => {
+        const model = models[req.params.subcollection];
+
+        model.find({ thread: req.params.id }, (err, results) => {
+            res.send(results);
+        });
+    });
 
     router.post('/api/:collection', (req, res) => {
         const model = models[req.params.collection];
-
         model.create(req.body, (err, data) => {
-            if (!err) socket.emit(`new-${model.modelName.toLowerCase()}`, data);
+            if (!err) socket.emit(
+                `new-${model.modelName.toLowerCase()}-${req.body.thread}`,
+                data
+            );
         });
 
         res.send(req.body);

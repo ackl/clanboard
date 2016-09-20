@@ -6,15 +6,15 @@
 </template>
 
 <script lang="babel">
-    import ThreadThumbnail from './ThreadThumbnail.vue'
-    import io from 'socket.io-client'
+    import io from 'socket.io-client';
+    import ThreadThumbnail from './ThreadThumbnail.vue';
 
-    let socket = io()
+    const socket = io();
 
     export default {
         components: { ThreadThumbnail },
-        data: function () {
-            return { threads: [] }
+        data: function() {
+            return { threads: [] };
         },
         methods: {
             onNewThread(data) {
@@ -22,8 +22,8 @@
             }
         },
         route: {
-            activate: function () {
-                this.$http.get('/api/threads').then((res) => {
+            activate: function() {
+                this.$http.get('/api/thread').then((res) => {
                     this.threads = res.body;
                 });
 

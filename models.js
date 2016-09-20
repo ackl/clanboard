@@ -4,9 +4,7 @@ module.exports = (db) => {
 
     const postSchema = new mongoose.Schema({
         body: String,
-        thread: ObjectId,
-        author: ObjectId,
-        image: String,
+        thread: ObjectId
     });
 
     postSchema.virtual('created_at').get(function() {
@@ -17,10 +15,9 @@ module.exports = (db) => {
     postSchema.set('toJSON', { virtuals: true });
 
     return {
-        posts: db.model('Post', postSchema),
-        threads: db.model('Thread', new mongoose.Schema({
-            title: String,
-            post: ObjectId
+        post: db.model('Post', postSchema),
+        thread: db.model('Thread', new mongoose.Schema({
+            title: String
         }))
     }
 };

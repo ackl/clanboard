@@ -8,8 +8,8 @@
 <script lang="babel">
     export default {
         methods: {
-            link: function () {
-                this.$route.router.go({ name: 'home' })
+            link: function() {
+                this.$route.router.go({ name: 'home' });
             }
         }
     }

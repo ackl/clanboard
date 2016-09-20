@@ -7,13 +7,13 @@
 
 <script lang="babel">
     export default {
-        props: [ 'thread' ],
+        props: ['thread'],
         methods: {
-            link: function () {
+            link: function() {
                 this.$route.router.go({
                     name: 'thread',
                     params: { threadId: this.thread._id }
-                })
+                });
             }
         }
     }

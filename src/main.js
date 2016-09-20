@@ -1,20 +1,20 @@
-import 'material-design-lite/material.css'
-import 'material-design-lite/material.js'
-import App from './components/App.vue'
-import Thread from './components/Thread.vue'
-import ThreadList from './components/ThreadList.vue'
+import 'material-design-lite/material.css';
+import 'material-design-lite/material.js';
+import App from './components/App.vue';
+import Thread from './components/Thread.vue';
+import ThreadList from './components/ThreadList.vue';
 
-import Vue from 'vue'
-import VueMdl from 'vue-mdl'
-import VueResource from 'vue-resource'
-import VueRouter from 'vue-router'
+import Vue from 'vue';
+import VueMdl from 'vue-mdl';
+import VueResource from 'vue-resource';
+import VueRouter from 'vue-router';
 
-Vue.use(VueMdl)
-Vue.use(VueResource)
-Vue.use(VueRouter)
+Vue.use(VueMdl);
+Vue.use(VueResource);
+Vue.use(VueRouter);
 
 
-var router = new VueRouter();
+const router = new VueRouter();
 router.map({
     '/': {
         name: 'home',
@@ -31,4 +31,4 @@ window.vm = new Vue({
     components: {
         app: router.start(App, 'app')
     }
-})
+});
