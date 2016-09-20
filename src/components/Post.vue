@@ -1,16 +1,19 @@
 <template lang="pug">
-.mdl-card.mdl-shadow--2dp.chatchan-post
-  slot(name='title' v-if='title')
-    .mdl-card__title
-      h2.mdl-card__title-text {{title}}
-  slot(name='subtitle' v-if='subtitle')
-    .mdl-card__subtitle-text {{{subtitle}}}
-  slot(name='supporting-text' v-if='supportingText')
-    .mdl-card__supporting-text {{supportingText}}
-  slot(name='media' v-if='media')
-    .mdl-card__media
-      img(:src='media')
-
+    div
+        .mdl-card.mdl-shadow--2dp.chatchan-post
+          slot(name='title' v-if='title')
+            .mdl-card__title
+              h2.mdl-card__title-text {{title}}
+          slot(name='subtitle' v-if='subtitle')
+            .mdl-card__subtitle-text {{{subtitle}}}
+          slot(name='supporting-text' v-if='supportingText')
+            .mdl-card__supporting-text {{supportingText}}
+          slot(name='media' v-if='media')
+            .mdl-card__media
+              img(:src='media')
+          slot(name='actions')
+            .mdl-card__actions
+              mdl-button(@click="triggerReply") Reply
 </template>
 
 <script>
@@ -97,6 +100,9 @@ export default {
         },
         triggerActionsEvent() {
             this.$dispatch(this.actions)
+        },
+        triggerReply() {
+            this.$dispatch('reply', this.post.thread)
         }
     }
 }

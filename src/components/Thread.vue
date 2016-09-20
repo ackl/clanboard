@@ -1,10 +1,10 @@
 <template lang="pug">
     div
         p {{ threadId }}
-        new-post(:thread-id="threadId")
+        new-post(v-ref:box :thread-id="threadId")
         ul.chatchan-thread
             li(v-for="post in posts | orderBy '_id' -1")
-                post(:post="post")
+                post(:post="post" v-on:reply="addReply")
 </template>
 
 <script lang="babel">
@@ -43,6 +43,9 @@
                         Notify.requestPermission();
                     }
                 }
+            },
+            addReply(data) {
+                this.$refs.box.postBody += `>>${data}`;
             }
         },
         route: {
