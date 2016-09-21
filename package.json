@@ -1,5 +1,6 @@
 {
   "name": "chatchan",
+  "description": "A chatroom and imageboard hybrid",
   "version": "0.0.0",
   "private": true,
   "scripts": {
