@@ -1,22 +1,33 @@
-module.exports = function (models, socket) {
-    var router = require('express').Router();
+module.exports = (models, socket) => {
+    const router = require('express').Router();
 
-    router.get('/', function (req, res, next) {
+    router.get('/', (req, res) => {
         res.send('index.html');
     });
+    router.get('/api/:collection', (req, res) => {
+        const model = models[req.params.collection];
 
-    router.get('/api/:collection', function (req, res, next) {
-        models[req.params.collection].find(function (err, results, count) {
+        model.find((err, results) => {
             res.send(results);
         });
     });
-    router.post('/api/:collection', function (req, res) {
-        var model = models[req.params.collection];
-        model.create(req.body, function (err, data) {
-            model.find(function (err, results, count) {
-                socket.emit('new-' + model.modelName.toLowerCase(), results);
-            });
+    router.get('/api/:collection/:id/:subcollection', (req, res) => {
+        const model = models[req.params.subcollection];
+
+        model.find({ thread: req.params.id }, (err, results) => {
+            res.send(results);
         });
+    });
+
+    router.post('/api/:collection', (req, res) => {
+        const model = models[req.params.collection];
+        model.create(req.body, (err, data) => {
+            if (!err) socket.emit(
+                `new-${model.modelName.toLowerCase()}-${req.body.thread}`,
+                data
+            );
+        });
+
         res.send(req.body);
     });
 

@@ -1,15 +1,23 @@
-module.exports = function (db) {
-    var mongoose = require('mongoose');
-    var ObjectId = mongoose.Schema.Types.ObjectId;
+module.exports = (db) => {
+    const mongoose = require('mongoose');
+    const ObjectId = mongoose.Schema.Types.ObjectId;
+
+    const postSchema = new mongoose.Schema({
+        body: String,
+        thread: ObjectId
+    });
+
+    postSchema.virtual('created_at').get(function() {
+        return this._id.getTimestamp();
+    });
+
+    postSchema.set('toObject', { virtuals: true });
+    postSchema.set('toJSON', { virtuals: true });
 
     return {
-        posts: db.model('Post', mongoose.Schema({
-            body: String,
-            thread: ObjectId
-        })),
-        threads: db.model('Thread', mongoose.Schema({
-            title: String,
-            author: ObjectId
+        post: db.model('Post', postSchema),
+        thread: db.model('Thread', new mongoose.Schema({
+            title: String
         }))
     }
 };

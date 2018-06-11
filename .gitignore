@@ -1,1 +1,2 @@
-public/build.js
+public/*
+node_modules
